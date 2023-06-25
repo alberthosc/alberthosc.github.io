@@ -581,7 +581,146 @@ int main(int, char**){
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ruby" data-lang="ruby">std::cout &lt;&lt; "Meu primeiro teste!";</code></pre>
+<pre class="highlight"><code class="language-regions.cpp" data-lang="regions.cpp">#include &lt;iostream&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+int main(int, char**){
+  cv::Mat image;
+  cv::Vec3b val;
+  int xi,yi,xf,yf;
+  //Carregando imagem:
+  image = cv::imread("biel.png",cv::IMREAD_GRAYSCALE);
+  if(!image.data)
+    std::cout &lt;&lt; "nao abriu biel.png" &lt;&lt; std::endl;
+  // Descobrindo o tamanho da imagem:
+  cv::Size size = image.size();
+  std::cout &lt;&lt; "Considerando que a imagem tem as seguintes dimensões:" &lt;&lt; std::endl;
+  // Imprime o tamanho em pixels:
+  std::cout &lt;&lt; "Largura: " &lt;&lt; size.width &lt;&lt; " pixels" &lt;&lt; std::endl;
+  std::cout &lt;&lt; "Altura: " &lt;&lt; size.height &lt;&lt; " pixels" &lt;&lt; std::endl;
+  // Recebendo valores:
+  std::cout &lt;&lt; "Defina dois pontos (x,y) opostos de um retângulo que contemple essa dimensão da imagem:" &lt;&lt; std::endl;
+  std::cout &lt;&lt;"Ponto inicial (X):";
+  std::cin &gt;&gt; xi;
+  std::cout &lt;&lt;"Ponto inicial (Y):";
+  std::cin &gt;&gt; yi;
+  std::cout &lt;&lt;"Ponto final (X):";
+  std::cin &gt;&gt; xf;
+  std::cout &lt;&lt;"Ponto final (Y):";
+  std::cin &gt;&gt; yf;
+  cv::imshow("janela", image);
+  cv::waitKey();
+  image = cv::imread("biel.png",cv::IMREAD_GRAYSCALE);
+  cv::namedWindow("janela", cv::WINDOW_AUTOSIZE);
+  for(int i=xi;i&lt;=xf;i++){
+    for(int j=yi;j&lt;=yf;j++){
+        image.at&lt;uchar&gt;(i,j) = 255 - (image.at&lt;uchar&gt;(i,j));
+    }
+  }
+  cv::imshow("janela", image);
+  cv::waitKey();
+  return 0;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>regions.cpp Input:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="biel.png" alt="biel">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>regions.cpp Terminal:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="terminalregions.png" alt="terminalregions">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pixels.cpp Response:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="saidaregions.png" alt="saidaregions">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 4: O programa deverá trocar os quadrantes em diagonal na imagem. Explore o uso da classe Mat e seus construtores para criar as regiões que serão trocadas.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-trocaregioes.cpp" data-lang="trocaregioes.cpp">#include &lt;iostream&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+int main(int, char **)
+{
+    cv::Mat image;
+    cv::Vec3b val;
+    // Carregando imagem:
+    image = cv::imread("biel.png", cv::IMREAD_GRAYSCALE);
+    if (!image.data)
+        std::cout &lt;&lt; "nao abriu biel.png" &lt;&lt; std::endl;
+    // Descobrindo o tamanho da imagem:
+    cv::Size size = image.size();
+    std::cout &lt;&lt; "Considerando que a imagem tem as seguintes dimensões:" &lt;&lt; std::endl;
+    // Imprime o tamanho em pixels:
+    std::cout &lt;&lt; "Largura: " &lt;&lt; size.width &lt;&lt; " pixels" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Altura: " &lt;&lt; size.height &lt;&lt; " pixels" &lt;&lt; std::endl;
+    cv::imshow("janela 1", image);
+    cv::waitKey();
+    // Definindo os 4 quadrantes com submatrizes na classe "Mat":
+    int largura = size.width / 2;
+    int altura = size.height / 2;
+    cv::Mat quadrante1 = image(cv::Rect(0, 0, largura, altura));
+    cv::Mat quadrante2 = image(cv::Rect(largura, 0, largura, altura));
+    cv::Mat quadrante3 = image(cv::Rect(0, altura, largura, altura));
+    cv::Mat quadrante4 = image(cv::Rect(largura, altura, largura, altura));
+    // Usando o método "hconcat" da classe "Mat" para concatentar os quadrantes opostos
+    // horizontalmente em duas linhas, e o método "vconcat" para concatenar as linhas com
+    // os quadrantes já reorganizados:
+    cv::Mat linha1, linha2, imagemFinal;
+    cv::hconcat(quadrante4, quadrante3, linha1);
+    cv::hconcat(quadrante2, quadrante1, linha2);
+    cv::vconcat(linha1, linha2, imagemFinal);
+    imwrite("saidaquadrantes.png", imagemFinal);
+    cv::imshow("janela 2", imagemFinal);
+    cv::waitKey();
+    return 0;
+}</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="biel.png" alt="biel">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>regions.cpp Terminal:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="saidaquadrantes.png" alt="saidaquadrantes">
 </div>
 </div>
 </div>
@@ -591,7 +730,7 @@ int main(int, char**){
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-25 12:34:57 -0300
+Last updated 2023-06-25 12:59:13 -0300
 </div>
 </div>
 </body>
