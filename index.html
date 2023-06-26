@@ -733,7 +733,7 @@ int main(int, char **)
 <div class="ulist">
 <ul>
 <li>
-<p>Exemplo 5: O programa deve gerar uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal, como a imagem apresentada a seguir. Grave a imagem no formato PNG e no formato YML. Compare os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. Trace um gráfico da diferença calculada ao longo da linha correspondente extraída nas imagens. O que você observa?</p>
+<p>Exemplo 5: O programa gera uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal. Grava a imagem no formato PNG e no formato YML. Por último é feita uma comparação entre os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. É possível observar no gráfico gerado que a quantidade de informações, ao tratar a senóide como um arquivo PNG, é bem menor quando comparada com o arquivo YML. Isso se dá pelo fato do arquivo YML tratar dados em ponto flutuante, o que difere das informações contidas no PNG (valores inteiros). O algoritmo gera também dois arquivos no formato TXT, e o gráfico foi gerado no excel.</p>
 </li>
 </ul>
 </div>
@@ -741,74 +741,79 @@ int main(int, char **)
 <div class="content">
 <pre class="highlight"><code class="language-filestorage.cpp" data-lang="filestorage.cpp">#include &lt;iostream&gt;
 #include &lt;opencv2/opencv.hpp&gt;
-#include &lt;opencv2/plot.hpp&gt;
 #include &lt;sstream&gt;
 #include &lt;string&gt;
-#include "opencv2/plot.hpp" //Biblioteca para plotar o gráfico da diferença entre os dois arquivos de img
+#include &lt;fstream&gt;
 int SIDE = 256;
-int PERIODOS = 4;
-int main(int argc, char** argv)
+int PERIODOS = 8;
+int main(int argc, char **argv)
 {
-    std::stringstream ss_img, ss_yml;
-    cv::Mat image_yml, image_png;
-    ss_yml &lt;&lt; "senoideYML-" &lt;&lt; SIDE &lt;&lt; ".yml";
-    // Gerando a imagem YML
-    image_yml = cv::Mat::zeros(SIDE, SIDE, CV_32FC1);
-    cv::FileStorage fs(ss_yml.str(), cv::FileStorage::WRITE);
-    for (int i = 0; i &lt; SIDE; i++)
+  std::stringstream ss_img, ss_yml;
+  cv::Mat image;
+  ss_yml &lt;&lt; "senoide-" &lt;&lt; SIDE &lt;&lt; ".yml";
+  image = cv::Mat::zeros(SIDE, SIDE, CV_32FC1);
+  cv::FileStorage fs(ss_yml.str(), cv::FileStorage::WRITE);
+  for (int i = 0; i &lt; SIDE; i++)
+  {
+    for (int j = 0; j &lt; SIDE; j++)
     {
-        for (int j = 0; j &lt; SIDE; j++)
-        {
-            image_yml.at&lt;float&gt;(i, j) = 127 * sin(2 * M_PI * PERIODOS * j / SIDE) + 128;
-        }
+      image.at&lt;float&gt;(i, j) = 127 * sin(2 * M_PI * PERIODOS * j / SIDE) + 128;
     }
-    fs &lt;&lt; "mat" &lt;&lt; image_yml;
-    fs.release();
-    // Gerando a imagem PNG
-    cv::normalize(image_yml, image_png, 0, 255, cv::NORM_MINMAX);
-    image_png.convertTo(image_png, CV_8U);
-    ss_img &lt;&lt; "senoidePNG-" &lt;&lt; SIDE &lt;&lt; ".png";
-    cv::imwrite(ss_img.str(), image_png);
-    // Lendo as imagens geradas
-    cv::FileStorage fs_yml(ss_yml.str(), cv::FileStorage::READ);
-    fs_yml["mat"] &gt;&gt; image_yml;
-    cv::normalize(image_yml, image_yml, 0, 255, cv::NORM_MINMAX);
-    image_yml.convertTo(image_yml, CV_8U);
-    image_png = cv::imread(ss_img.str(), cv::IMREAD_GRAYSCALE);
-    // Calculando a diferença entre as linhas das imagens
-    std::vector&lt;double&gt; diff(SIDE);
-    for (int i = 0; i &lt; SIDE; i++)
+  }
+  // Criando um .txt referente à imagem .yml
+  std::ofstream outFileyml("imageyml.txt");
+  if (!outFileyml.is_open())
+  {
+    std::cout &lt;&lt; "Erro ao criar o arquivo de saída." &lt;&lt; std::endl;
+    return -1;
+  }
+  for (int i = 0; i &lt; image.rows; i++)
+  {
+    for (int j = 0; j &lt; image.cols; j++)
     {
-        diff[i] = cv::sum(image_yml.row(i))[0] - cv::sum(image_png.row(i))[0];
+      float pixelValues = image.at&lt;float&gt;(i, j);
+      outFileyml &lt;&lt; pixelValues &lt;&lt; " ";
     }
-    // Cria um vetor com as posições das linhas
-    std::vector&lt;double&gt; pos(SIDE);
-    for (int i = 0; i &lt; SIDE; i++) {
-        pos[i] = i;
+    outFileyml &lt;&lt; std::endl;
+  }
+  outFileyml.close();
+  fs &lt;&lt; "mat" &lt;&lt; image;
+  fs.release();
+  cv::normalize(image, image, 0, 255, cv::NORM_MINMAX);
+  image.convertTo(image, CV_8U);
+  ss_img &lt;&lt; "senoide-" &lt;&lt; SIDE &lt;&lt; ".png";
+  cv::imwrite(ss_img.str(), image);
+  fs.open(ss_yml.str(), cv::FileStorage::READ);
+  fs["mat"] &gt;&gt; image;
+  cv::normalize(image, image, 0, 255, cv::NORM_MINMAX);
+  image.convertTo(image, CV_8U);
+  // Criando um .txt referente à imagem .png
+  std::ofstream outFilepng("imagePNG.txt");
+  if (!outFilepng.is_open())
+  {
+    std::cout &lt;&lt; "Erro ao criar o arquivo de saída." &lt;&lt; std::endl;
+    return -1;
+  }
+  for (int i = 0; i &lt; image.rows; i++)
+  {
+    for (int j = 0; j &lt; image.cols; j++)
+    {
+      int pixelValue = image.at&lt;uchar&gt;(i, j);
+      outFilepng &lt;&lt; pixelValue &lt;&lt; " ";
     }
-    // Plotando o gráfico da diferença
-    cv::Mat plot_result;
-    cv::Mat plot_data(diff);
-    cv::Ptr&lt;cv::plot::Plot2d&gt; plot = cv::plot::Plot2d::create(pos, diff);
-    plot-&gt;setPlotBackgroundColor(cv::Scalar(50, 50, 50));
-    plot-&gt;setPlotBackgroundColor(cv::Scalar(50, 50, 50));
-    plot-&gt;setPlotLineColor(cv::Scalar(200, 200, 200));
-    plot-&gt;setInvertOrientation(false);
-    plot-&gt;setShowGrid(false);
-    plot-&gt;render(plot_result);
-    cv::waitKey();
-    cv::imshow("YML Image", image_yml);
-    cv::imshow("PNG Image", image_png);
-    cv::imshow("Difference Plot", plot_result);
-    cv::waitKey();
-    return 0;
+    outFilepng &lt;&lt; std::endl;
+  }
+  outFilepng.close();
+  cv::imshow("image", image);
+  cv::waitKey();
+  return 0;
 }</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>filestorage.cpp Input:</p>
+<p>Senoide Gerada:</p>
 </li>
 </ul>
 </div>
@@ -820,13 +825,13 @@ int main(int argc, char** argv)
 <div class="ulist">
 <ul>
 <li>
-<p>trocaregioes.cpp Response:</p>
+<p>Gráfico Comparativo:</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="saidaquadrantes.png" alt="saidaquadrantes">
+<img src="pngxyml.png" alt="pngxyml">
 </div>
 </div>
 </div>
@@ -836,7 +841,7 @@ int main(int argc, char** argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-25 14:07:10 -0300
+Last updated 2023-06-26 00:12:28 -0300
 </div>
 </div>
 </body>
