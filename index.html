@@ -504,7 +504,7 @@ int main(int argc, char** argv){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="biel.png" alt="biel">
+<img src="./image/biel.png" alt="biel">
 </div>
 </div>
 <div class="ulist">
@@ -557,7 +557,7 @@ int main(int, char**){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="bolhas.png" alt="bolhas">
+<img src="./image/bolhas.png" alt="bolhas">
 </div>
 </div>
 <div class="ulist">
@@ -569,7 +569,7 @@ int main(int, char**){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="saidabolhas.png" alt="saidabolhas">
+<img src="./image/saidabolhas.png" alt="saidabolhas">
 </div>
 </div>
 <div class="ulist">
@@ -631,7 +631,7 @@ int main(int, char**){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="biel.png" alt="biel">
+<img src="./image/biel.png" alt="biel">
 </div>
 </div>
 <div class="ulist">
@@ -643,7 +643,7 @@ int main(int, char**){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="terminalregions.png" alt="terminalregions">
+<img src="./image/terminalregions.png" alt="terminalregions">
 </div>
 </div>
 <div class="ulist">
@@ -655,7 +655,7 @@ int main(int, char**){
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="saidaregions.png" alt="saidaregions">
+<img src="./image/saidaregions.png" alt="saidaregions">
 </div>
 </div>
 <div class="ulist">
@@ -715,7 +715,7 @@ int main(int, char **)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="biel.png" alt="biel">
+<img src="./image/biel.png" alt="biel">
 </div>
 </div>
 <div class="ulist">
@@ -727,7 +727,7 @@ int main(int, char **)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="saidaquadrantes.png" alt="saidaquadrantes">
+<img src="./image/saidaquadrantes.png" alt="saidaquadrantes">
 </div>
 </div>
 <div class="ulist">
@@ -819,7 +819,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="senoidePNG-256.png" alt="senoidePNG 256">
+<img src="./image/senoidePNG-256.png" alt="senoidePNG 256">
 </div>
 </div>
 <div class="ulist">
@@ -831,7 +831,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="pngxyml.png" alt="pngxyml">
+<img src="./image/pngxyml.png" alt="pngxyml">
 </div>
 </div>
 <div class="ulist">
@@ -888,7 +888,7 @@ int main(int argc, char**argv) {
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="desafio-esteganografia.png" alt="desafio esteganografia">
+<img src="./image/desafio-esteganografia.png" alt="desafio esteganografia">
 </div>
 </div>
 <div class="ulist">
@@ -900,7 +900,7 @@ int main(int argc, char**argv) {
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="estegsaida.png" alt="estegsaida">
+<img src="./image/estegsaida.png" alt="estegsaida">
 </div>
 </div>
 <div class="paragraph">
@@ -915,7 +915,7 @@ int main(int argc, char**argv) {
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="bolhas.png" alt="bolhas">
+<img src="./image/bolhas.png" alt="bolhas">
 </div>
 </div>
 <div class="paragraph">
@@ -967,6 +967,7 @@ int main(int argc, char **argv)
         }
     }
     cv::imshow("image", image);
+    cv::imwrite("sembordas.png", image);
     cv::waitKey();
     // busca objetos com bolhas internas
     // Muda a cor do fundo preto para o tom
@@ -979,6 +980,7 @@ int main(int argc, char **argv)
     cv::floodFill(image, p, 150);
     holeobjects = 0;
     cv::imshow("image", image);
+    cv::imwrite("mudacor.png", image);
     cv::waitKey();
     for (int i = 0; i &lt; height; i++)
     {
@@ -1000,6 +1002,7 @@ int main(int argc, char **argv)
         }
     }
     cv::imshow("image", image);
+    cv::imwrite("semburacos.png", image);
     cv::waitKey();
     // Muda a cor do fundo do tom de cinza 150 para
     // preto (0)
@@ -1007,6 +1010,7 @@ int main(int argc, char **argv)
     p.y = 0;
     cv::floodFill(image, p, 0);
     cv::imshow("image", image);
+    cv::imwrite("voltacor.png", image);
     cv::waitKey();
     // busca objetos presentes
     nobjects = 0;
@@ -1046,7 +1050,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="sembordas.png" alt="sembordas">
+<img src="./image/sembordas.png" alt="sembordas">
 </div>
 </div>
 <div class="ulist">
@@ -1058,7 +1062,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="mudacor.png" alt="mudacor">
+<img src="./image/mudacor.png" alt="mudacor">
 </div>
 </div>
 <div class="ulist">
@@ -1070,7 +1074,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="semburacos.png" alt="semburacos">
+<img src="./image/semburacos.png" alt="semburacos">
 </div>
 </div>
 <div class="ulist">
@@ -1082,7 +1086,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="voltacor.png" alt="voltacor">
+<img src="./image/voltacor.png" alt="voltacor">
 </div>
 </div>
 <div class="ulist">
@@ -1094,7 +1098,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="labeling.png" alt="labeling">
+<img src="./image/labeling.png" alt="labeling">
 </div>
 </div>
 <div class="ulist">
@@ -1106,7 +1110,7 @@ int main(int argc, char **argv)
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="terminaloutput.png" alt="terminaloutput">
+<img src="./image/terminaloutput.png" alt="terminaloutput">
 </div>
 </div>
 </div>
@@ -1116,7 +1120,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-26 10:17:14 -0300
+Last updated 2023-06-26 11:54:53 -0300
 </div>
 </div>
 </body>
