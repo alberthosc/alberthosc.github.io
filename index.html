@@ -703,6 +703,7 @@ int main(int, char **)
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">filestorage.cpp</div>
 <div class="content">
 <pre class="highlight"><code class="language-filestorage.cpp" data-lang="filestorage.cpp">#include &lt;iostream&gt;
 #include &lt;opencv2/opencv.hpp&gt;
@@ -800,6 +801,7 @@ int main(int argc, char **argv)
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">descriptesteganometria.cpp</div>
 <div class="content">
 <pre class="highlight"><code class="language-descriptesteganometria.cpp" data-lang="descriptesteganometria.cpp">#include &lt;iostream&gt;
 #include &lt;opencv2/opencv.hpp&gt;
@@ -861,6 +863,7 @@ int main(int argc, char**argv) {
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">bolhascombolhas.cpp</div>
 <div class="content">
 <pre class="highlight"><code class="language-bolhascombolhas.cpp" data-lang="bolhascombolhas.cpp">#include &lt;iostream&gt;
 #include &lt;opencv2/opencv.hpp&gt;
@@ -1031,6 +1034,7 @@ int main(int argc, char **argv)
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">equalize.cpp</div>
 <div class="content">
 <pre class="highlight"><code class="language-equalize.cpp" data-lang="equalize.cpp">#include &lt;iostream&gt;
 #include &lt;opencv2/opencv.hpp&gt;
@@ -1120,6 +1124,217 @@ int main(int argc, char** argv){
 <div class="paragraph">
 <p>Como pode ser observado, a equalização revela detalhes antes escondidos pela baixa iluminação, como a mão, a barba e alguns contornos.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 9: A filtragem no domínio espacial é uma ferramenta que busca alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o filtro utilizado. Nesse caso, as operações são feitas diretamente no plano da imagem. É possível realizar a filtragem através da convolução bidimensional de uma máscara (matriz de tamanho ímpar) com a matriz que representa a imagem a ser filtrada. A fórmula da convolução pode ser observada na <a href="#convolucao">figura 19</a>.</p>
+</li>
+</ul>
+</div>
+<div id="convolucao" class="imageblock">
+<div class="content">
+<img src="./image/convolucao.png" alt="convolucao">
+</div>
+<div class="title">Figure 19. Convolução bidimensional</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 9 (Continuação): Baseado nisso, o algoritmo a seguir foi desenvolvido para realizar o filtro laplaciano do gaussiano, onde a princípio aplica-se a máscara gaussiana na imagem de entrada, e em seguida aplica a máscara laplaciana. Além desse filtro, também é possível aplicar uma série de filtros diferentes: filtro da média; gaussiano; sobel horizontal; sobel vertical; sobel +45°; -45°; laplaciano e boost. O usuário determina qual filtro especificamente deseja aplicar à imagem de entrada via terminal, de acordo com a letra digitada (ver switch case no algoritmo <a href="#lapgaus">lapgauss.cpp</a>).</p>
+</li>
+</ul>
+</div>
+<div id="lapgaus" class="listingblock">
+<div class="title">lapgauss.cpp</div>
+<div class="content">
+<pre class="highlight"><code class="language-lapgauss.cpp" data-lang="lapgauss.cpp">#include &lt;iostream&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+
+int main(int, char **)
+{
+    cv::Mat image;
+
+    //image = cv::imread("imgsalepimenta.png", cv::IMREAD_GRAYSCALE);
+    image = cv::imread("sobel.png", cv::IMREAD_GRAYSCALE);
+
+
+    if (!image.data)
+        std::cout &lt;&lt; "nao abriu imgsalepimenta.png" &lt;&lt; std::endl;
+
+    cv::imshow("Original", image);
+
+    float media[] = {0.1111, 0.1111, 0.1111, 0.1111, 0.1111,
+                     0.1111, 0.1111, 0.1111, 0.1111};
+    float gauss[] = {0.0625, 0.125, 0.0625, 0.125, 0.25,
+                     0.125, 0.0625, 0.125, 0.0625};
+    float vertical [] = {-1, 0, 1, -2, 0, 2, -1, 0, 1};     // Máscara de Sobel vertical
+    float horizontal [] = {-1, -2, -1, 0, 0, 0, 1, 2, 1};   // Máscara de Sobel horizontal
+    float mais45 [] = {0, 1, 2, -1, 0, 1, -2, -1, 0};       // Máscara de Sobel +45°
+    float menos45 [] = {-2, -1, 0, -1, 0, 1, 0, 1, 2};      // Máscara de Sobel -45°
+    float laplacian[] = {0, -1, 0, -1, 4, -1, 0, -1, 0};
+    float boost[] = {0, -1, 0, -1, 5.2, -1, 0, -1, 0};      // Máscara de nitidez
+
+    cv::Mat image32f, imageFiltered, secondFilteredimage;
+    cv::Mat mask(3, 3, CV_32F);
+    cv::Mat result;
+    int absolut, laplgauss = 0;
+    char key;
+
+    mask = cv::Mat(3, 3, CV_32F, media);
+    absolut = 1; // calcs abs of the image
+
+    // Loop para o programa rodar até que ESC seja pressionada
+    while(key != 27){
+
+    key = (char)cv::waitKey();
+    switch (key)
+    {
+    case 'a':
+        absolut = !absolut;
+        laplgauss = 0;
+        break;
+    case 'm':
+        mask = cv::Mat(3, 3, CV_32F, media);
+        laplgauss = 0;
+        break;
+    case 'g':
+        mask = cv::Mat(3, 3, CV_32F, gauss);
+        laplgauss = 0;
+        break;
+    case 'h':
+        mask = cv::Mat(3, 3, CV_32F, horizontal);
+        laplgauss = 0;
+        break;
+    case 'v':
+        mask = cv::Mat(3, 3, CV_32F, vertical);
+        laplgauss = 0;
+        break;
+    case 'j':
+        mask = cv::Mat(3, 3, CV_32F, mais45);
+        laplgauss = 0;
+        break;
+    case 'k':
+        mask = cv::Mat(3, 3, CV_32F, menos45);
+        laplgauss = 0;
+        break;
+    case 'l':
+        mask = cv::Mat(3, 3, CV_32F, laplacian);
+        laplgauss = 0;
+        break;
+    case 'b':
+        mask = cv::Mat(3, 3, CV_32F, boost);
+        laplgauss = 0;
+        break;
+    case 'p':
+        // Opção para o filtro LoG (Laplaciano do Gaussiano)
+        laplgauss = 1;
+        break;
+    default:
+        break;
+    }
+
+    // Caso a seleção seja Laplaciano do Gaussiano
+    if (laplgauss == 1)
+    {
+        image.convertTo(image32f, CV_32F);
+
+        // Aplicando o filtro gaussiano
+        mask = cv::Mat(3, 3, CV_32F, gauss);
+        cv::filter2D(image32f, imageFiltered, image32f.depth(),
+                     mask,
+                     cv::Point(1, 1), 0);
+        // Aplicando o filtro laplaciano
+        mask = cv::Mat(3, 3, CV_32F, laplacian);
+        cv::filter2D(imageFiltered, secondFilteredimage, image32f.depth(),
+                     mask,
+                     cv::Point(1, 1), 0);
+
+        if (absolut)
+        {
+            secondFilteredimage = cv::abs(secondFilteredimage);
+        }
+
+        secondFilteredimage.convertTo(result, CV_8U);
+    }
+    else if (laplgauss == 0)
+    {
+        image.convertTo(image32f, CV_32F);
+
+        cv::filter2D(image32f, imageFiltered, image32f.depth(),
+                     mask,
+                     cv::Point(1, 1), 0);
+        if (absolut)
+        {
+            imageFiltered = cv::abs(imageFiltered);
+        }
+
+        imageFiltered.convertTo(result, CV_8U);
+    }
+
+    cv::imshow("Filtrado", result);
+    }
+    //cv::waitKey();
+    return 0;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 9 (Continuação): A imagem de entrada <a href="#salepimenta">figura 20</a>, retirada do livro de Processamento Digital de Imagens de Rafael C. Gonzalez, foi utilizada para avaliar os efeitos de suavização do ruido na aplicação dos filtros mostrados acima. Vale salientar que o filtro ideal para esse tipo de ruido é o filtro da mediana.</p>
+</li>
+</ul>
+</div>
+<div id="salepimenta" class="imageblock">
+<div class="content">
+<img src="./image/imgsalepimenta.png" alt="imgsalepimenta">
+</div>
+<div class="title">Figure 20. Imagem Sal e Pimenta (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 9 (Continuação): As respostas da media, laplaciano, gaussiano e laplaciano do gaussiano são vistas, respectivamente, nas seguintes figuras: <a href="#media">figura 21</a>, <a href="#gaussiano">figura 22</a>, <a href="#laplaciano">figura 23</a>, <a href="#log">figura 24</a>.</p>
+</li>
+</ul>
+</div>
+<div id="media" class="imageblock">
+<div class="content">
+<img src="./image/media.png" alt="media">
+</div>
+<div class="title">Figure 21. Filtragem com máscara da média</div>
+</div>
+<div id="gaussiano" class="imageblock">
+<div class="content">
+<img src="./image/gaussiano.png" alt="gaussiano">
+</div>
+<div class="title">Figure 22. Filtragem com máscara gaussiana</div>
+</div>
+<div id="laplaciano" class="imageblock">
+<div class="content">
+<img src="./image/laplaciano.png" alt="laplaciano">
+</div>
+<div class="title">Figure 23. Filtragem com máscara laplaciana</div>
+</div>
+<div id="log" class="imageblock">
+<div class="content">
+<img src="./image/log.png" alt="log">
+</div>
+<div class="title">Figure 24. Filtragem com máscara laplaciano do gaussiano</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 9 (Continuação): Note que o filtro laplaciano do gaussiano apresenta detalhes de contornos na imagem, mas com uma quantidade de ruído bem menor que o filtro somente laplaciano. Isso ocorre pela suavização feita pelo filtro gaussiano antes da aplicação do laplaciano. Além disso, é notório o borramento causado pelos filtros da média e gaussiano. Para reduzir a suavização ocasionada pelo filtro da média, é possível realizar a média ponderada, definindo na máscara pesos maiores para a sua região central (veja a <a href="#mascaramedia">figura 25</a> retirada do livro de Rafael C. Gonzalez. A letra "a" é a máscara da média e "b" da média ponderada).</p>
+</li>
+</ul>
+</div>
+<div id="mascaramedia" class="imageblock">
+<div class="content">
+<img src="./image/filtrodamedia.png" alt="filtrodamedia">
+</div>
+<div class="title">Figure 25. Máscaras da média aritmética (a) e média ponderada (b) (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
 </div>
 </div>
 </div>
@@ -1127,7 +1342,7 @@ int main(int argc, char** argv){
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-26 21:10:16 -0300
+Last updated 2023-06-28 00:04:46 -0300
 </div>
 </div>
 </body>
