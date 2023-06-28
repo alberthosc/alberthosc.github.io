@@ -458,7 +458,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#s_ProcessamentodeImagensnoDomínioEspacial">Processamento de Imagens no Domínio Espacial</a></p>
 </li>
 <li>
-<p><a href="#s_makefile">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></p>
+<p><a href="#s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -491,6 +491,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p><a href="#s_9">Filtragem no Domínio Espacial</a></p>
 </li>
+<li>
+<p><a href="#s_10">Algoritmo de Tiltshif</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</a></p>
+</li>
+<li>
+<p><a href="#s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#s_11">Transformada Discreta de Fourier</a></p>
+</li>
 </ol>
 </div>
 </li>
@@ -503,7 +519,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="s_exemplos">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
+<h3 id="s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
 <div id="s_makefile" class="ulist">
 <ul>
 <li>
@@ -1386,13 +1402,199 @@ int main(int, char **)
 </div>
 <div class="title">Figure 25. Máscaras da média aritmética (a) e média ponderada (b) (processamento digital de imagens - Rafael c. gonzalez)</div>
 </div>
+<div id="s_10" class="ulist">
+<ul>
+<li>
+<p>Exemplo 10: Tiltshift</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</h3>
+<div class="paragraph">
+<p>Antes de inciar o tópico de Processamento de Imagens no Domínio da Frequência, é interessante comentar sobre a importância da transformada discreta de Fourier (DFT) nessas aplicações, mais especificamente, a transformada discreta de Fourier de duas dimensões (<a href="#DFT">figura 26</a>).</p>
+</div>
+<div id="DFT" class="imageblock">
+<div class="content">
+<img src="./image/DFT.png" alt="DFT">
+</div>
+<div class="title">Figure 26. Transformada Discreta de Fourier 2D (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div id="IDFT" class="imageblock">
+<div class="content">
+<img src="./image/IDFT.png" alt="IDFT">
+</div>
+<div class="title">Figure 27. Transformada Discreta de Fourier 2D Inversa (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div class="paragraph">
+<p>A transformada discreta de Fourier bidimensional é muito importante para o processamento de imagens, pois permite discretizar um sinal contínuo em funções senoidais ponderadas. No caso das imagens digitais, a DFT permite visualizar aspectos periódicos através de sua resposta em magnitude (<a href="#espectromag">figura 28</a>), sendo possível assim, elimitar ruidos com características periódicas. Algumas características da transformada discreta de Fourier são levadas em consideração para a sua implementação em algoritmos de processamento digital de imagens. Por exemplo, considerando que a transformada e sua inversa são infinitamentes periódicas, é possível centralizar um período completo da transformada  deslocando os dados para o centro da imagem. Uma vez que as componentes de altas frequência da matriz da imagem encontram-se nas suas extremidades, alterar os quadrantes da matriz (de forma semelhante ao deslocamento visto na <a href="#saidaquadrantes">figura 6</a>) permite uma fácil visualização e filtragem dessas componentes, as quais podem representar os ruídos periódicos presentes.</p>
+</div>
+<div id="espectromag" class="imageblock">
+<div class="content">
+<img src="./image/espectrodefourier(magnitude).png" alt="espectrodefourier(magnitude)">
+</div>
+<div class="title">Figure 28. Espectro em Magnitude (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div class="paragraph">
+<p>Além da resposta em magnitude (espectro em magnitude), a transformada também pode retornar o Ângulo de Fase (espectro em fase) (<a href="#angulodefase">figura 29</a>). Esse pode ser muito útil em algoritmos de rastreamento de contornos, que serão vistos posteriormente.</p>
+</div>
+<div id="angulodefase" class="imageblock">
+<div class="content">
+<img src="./image/angulodefase(magnitude).png" alt="angulodefase(magnitude)">
+</div>
+<div class="title">Figure 29. Ângulo de Fase (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div class="paragraph">
+<p>Levando em consideração os conceitos sobre a DFT, para realizar a filtragem de imagens no domínio da frequência e retornar a imagem no domínio de visualização, basta calcular a inversa da DFT com a máscara utilizada (ver <a href="#filtragemfreq">figura 30</a>).</p>
+</div>
+<div id="filtragemfreq" class="imageblock">
+<div class="content">
+<img src="./image/filtragemFreqEq.png" alt="filtragemFreqEq">
+</div>
+<div class="title">Figure 30. Filtragem no Domínio da Frequência (processamento digital de imagens - Rafael c. gonzalez)</div>
+</div>
+<div class="paragraph">
+<p>Entre os tipos de filtros utilizados, podem-se citar os filtros low-pass e high-pass. Ao atenuar altas frequências (low-pass) propõe uma diminuição visual dos pontos de grandes transições de intensidades em uma imagem, deixando-a borrada. Já, ao filtrar baixas frequências (high-pass) ocorre o realce dos pontos de grandes transições de intensidades, mas deixa a imagem resultante com um menor contraste.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
+<div id="s_11" class="ulist">
+<ul>
+<li>
+<p>Exemplo 11: O algoritmo a seguir, utiliza a <a href="#senoide">figura 7</a> da senoide, e calcula os seus espectros em magnitude e em fase.</p>
+</li>
+</ul>
+</div>
+<div id="dftimage" class="listingblock cpp">
+<div class="title">dftimage.cpp</div>
+<div class="content">
+<pre class="highlight"><code class="language-dftimage.cpp" data-lang="dftimage.cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+
+void swapQuadrants(cv::Mat &amp;image)
+{
+  cv::Mat tmp, A, B, C, D;
+
+  // se a imagem tiver tamanho impar, recorta a regiao para o maior
+  // tamanho par possivel (-2 = 1111...1110)
+  image = image(cv::Rect(0, 0, image.cols &amp; -2, image.rows &amp; -2));
+
+  int centerX = image.cols / 2;
+  int centerY = image.rows / 2;
+
+  // rearranja os quadrantes da transformada de Fourier de forma que
+  // a origem fique no centro da imagem
+  // A B   -&gt;  D C
+  // C D       B A
+  A = image(cv::Rect(0, 0, centerX, centerY));
+  B = image(cv::Rect(centerX, 0, centerX, centerY));
+  C = image(cv::Rect(0, centerY, centerX, centerY));
+  D = image(cv::Rect(centerX, centerY, centerX, centerY));
+
+  // swap quadrants (Top-Left with Bottom-Right)
+  A.copyTo(tmp);
+  D.copyTo(A);
+  tmp.copyTo(D);
+
+  // swap quadrant (Top-Right with Bottom-Left)
+  C.copyTo(tmp);
+  B.copyTo(C);
+  tmp.copyTo(B);
+}
+
+int main(int argc, char **argv)
+{
+  cv::Mat image, padded, complexImage;
+  std::vector&lt;cv::Mat&gt; planos;
+
+  image = imread(argv[1], cv::IMREAD_GRAYSCALE);
+  if (image.empty())
+  {
+    std::cout &lt;&lt; "Erro abrindo imagem" &lt;&lt; argv[1] &lt;&lt; std::endl;
+    return EXIT_FAILURE;
+  }
+
+  // expande a imagem de entrada para o melhor tamanho no qual a DFT pode ser
+  // executada, preenchendo com zeros a lateral inferior direita.
+  int dft_M = cv::getOptimalDFTSize(image.rows);
+  int dft_N = cv::getOptimalDFTSize(image.cols);
+  cv::copyMakeBorder(image, padded, 0, dft_M - image.rows, 0, dft_N - image.cols, cv::BORDER_CONSTANT, cv::Scalar::all(0));
+
+  // prepara a matriz complexa para ser preenchida
+  // primeiro a parte real, contendo a imagem de entrada
+  planos.push_back(cv::Mat_&lt;float&gt;(padded));
+  // depois a parte imaginaria com valores nulos
+  planos.push_back(cv::Mat::zeros(padded.size(), CV_32F));
+
+  // combina os planos em uma unica estrutura de dados complexa
+  cv::merge(planos, complexImage);
+
+  // calcula a DFT
+  cv::dft(complexImage, complexImage);
+  swapQuadrants(complexImage);
+
+  // planos[0] : Re(DFT(image)
+  // planos[1] : Im(DFT(image)
+  cv::split(complexImage, planos);
+
+  // calcula o espectro de magnitude e de fase (em radianos)
+  cv::Mat magn, fase;
+  cv::cartToPolar(planos[0], planos[1], magn, fase, false);
+  cv::normalize(fase, fase, 0, 1, cv::NORM_MINMAX);
+
+  // caso deseje apenas o espectro de magnitude da DFT, use:
+  cv::magnitude(planos[0], planos[1], magn);
+
+  // some uma constante para evitar log(0)
+  // log(1 + sqrt(Re(DFT(image))^2 + Im(DFT(image))^2))
+  magn += cv::Scalar::all(1);
+
+  // calcula o logaritmo da magnitude para exibir
+  // com compressao de faixa dinamica
+  log(magn, magn);
+  cv::normalize(magn, magn, 0, 1, cv::NORM_MINMAX);
+
+  // exibe as imagens processadas
+  cv::imshow("Imagem", image);
+  cv::imshow("Espectro de magnitude", magn);
+  cv::imwrite("mag.png", magn);
+  cv::imshow("Espectro de fase", fase);
+  cv::imwrite("fase.png", fase);
+
+  cv::waitKey();
+  return EXIT_SUCCESS;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exemplo 11 (Continuação): As respectivas respostas podem ser vistas a seguir (<a href="#mag">figura 31</a> e <a href="#fase">figura 32</a>).</p>
+</li>
+</ul>
+</div>
+<div id="mag" class="imageblock">
+<div class="content">
+<img src="./image/mag.png" alt="mag">
+</div>
+<div class="title">Figure 31. Magnitude Output</div>
+</div>
+<div id="fase" class="imageblock">
+<div class="content">
+<img src="./image/mag.png" alt="mag">
+</div>
+<div class="title">Figure 32. Fase Output</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-28 00:40:10 -0300
+Last updated 2023-06-28 10:25:55 -0300
 </div>
 </div>
 </body>
