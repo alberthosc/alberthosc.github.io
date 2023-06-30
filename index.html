@@ -434,12 +434,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>Albertho S. Costa - Engenheiro de Controle e Automação</h1>
 <div class="details">
 <span id="author" class="author">E-mail</span><br>
 <span id="email" class="email"><a href="mailto:albertho.costa.091@ufrn.edu.br">albertho.costa.091@ufrn.edu.br</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sumário</div>
+<ul class="sectlevel1">
+<li><a href="#_processamento_digital_de_imagens">Processamento Digital de Imagens</a></li>
+<li><a href="#_sumário">Sumário</a>
+<ul class="sectlevel2">
+<li><a href="#s_ProcessamentodeImagensnoDomínioEspacial">Processamento de Imagens no Domínio Espacial</a></li>
+<li><a href="#s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></li>
+<li><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</a></li>
+<li><a href="#s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div id="content">
@@ -520,7 +534,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
-<div id="s_makefile" class="ulist">
+<div class="sect3">
+<h4 id="s_makefile">MakeFile</h4>
+<div class="ulist">
 <ul>
 <li>
 <p>Arquivo Makefile que possui regras para compilar as dependências das bibliotecas openCV de forma automática.</p>
@@ -539,7 +555,10 @@ GCC = g++
 	$(GCC) -Wall -Wunused -std=c++11 -O2 $&lt; -o $@ `pkg-config --cflags --libs opencv4`</code></pre>
 </div>
 </div>
-<div id="s_1" class="ulist">
+</div>
+<div class="sect3">
+<h4 id="s_1">Helloworld</h4>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 1: A primeira implementação é de um algoritmo "helloworld" que apresente uma imagem em tons de cinza via terminal, utilizando openCV na linguagem de programação C++. O algoritmo retorna a imagem do Biel na <a href="#biel">figura 1</a> vista a seguir.</p>
@@ -1410,6 +1429,7 @@ int main(int, char **)
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</h3>
 <div class="paragraph">
@@ -1594,7 +1614,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-30 12:58:26 -0300
+Last updated 2023-06-30 13:23:26 -0300
 </div>
 </div>
 </body>
