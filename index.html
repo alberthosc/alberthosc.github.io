@@ -443,99 +443,49 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sumário</div>
+<ul class="sectlevel0">
+<li><a href="#_1_processamento_de_imagens_no_domínio_espacial">1. Processamento de Imagens no Domínio Espacial</a>
 <ul class="sectlevel1">
-<li><a href="#_processamento_digital_de_imagens">Processamento Digital de Imagens</a></li>
-<li><a href="#_sumário">Sumário</a>
+<li><a href="#_2_exemplos_do_implementação_de_processamento_digital_de_imagens_no_domínio_espacial_utilizando_opencv">2. Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a>
 <ul class="sectlevel2">
-<li><a href="#s_ProcessamentodeImagensnoDomínioEspacial">Processamento de Imagens no Domínio Espacial</a></li>
-<li><a href="#s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></li>
-<li><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</a></li>
-<li><a href="#s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></li>
+<li><a href="#_2_1_makefile">2.1. MakeFile</a></li>
+<li><a href="#_2_2_helloworld">2.2. Helloworld</a></li>
+<li><a href="#_2_3_pintando_pixels">2.3. Pintando Pixels</a></li>
+<li><a href="#_2_4_negativo">2.4. Negativo</a></li>
+<li><a href="#_2_5_trocando_quadrantes">2.5. Trocando Quadrantes</a></li>
+<li><a href="#_2_6_png_versus_yml">2.6. PNG versus YML</a></li>
+<li><a href="#_2_7_criptografia_por_esteganometria">2.7. Criptografia por Esteganometria</a></li>
+<li><a href="#_2_8_algoritmo_de_floodfill">2.8. Algoritmo de Floodfill</a></li>
+<li><a href="#_2_9_equalização_de_histogramas">2.9. Equalização de Histogramas</a></li>
+<li><a href="#_2_10_filtragem_no_domínio_espacial">2.10. Filtragem no Domínio Espacial</a></li>
+<li><a href="#_2_11_algoritmo_de_tiltshif">2.11. Algoritmo de Tiltshif</a></li>
+</ul>
+</li>
+<li><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">3. Processamento de Imagens no Domínio da Frequência</a></li>
+<li><a href="#s_exemplos2">4. Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a>
+<ul class="sectlevel2">
+<li><a href="#s_11">4.1. Transformada Discreta de Fourier</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_processamento_digital_de_imagens">Processamento Digital de Imagens</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sumário">Sumário</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="#s_ProcessamentodeImagensnoDomínioEspacial">Processamento de Imagens no Domínio Espacial</a></p>
-</li>
-<li>
-<p><a href="#s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><a href="#s_makefile">MakeFile</a></p>
-</li>
-<li>
-<p><a href="#s_1">Helloworld</a></p>
-</li>
-<li>
-<p><a href="#s_2">Pintando Pixels</a></p>
-</li>
-<li>
-<p><a href="#s_3">Negativo</a></p>
-</li>
-<li>
-<p><a href="#s_4">Trocando Quadrantes</a></p>
-</li>
-<li>
-<p><a href="#s_5">PNG versus YML</a></p>
-</li>
-<li>
-<p><a href="#s_6">Criptografia por Esteganometria</a></p>
-</li>
-<li>
-<p><a href="#s_7">Algoritmo de Floodfill</a></p>
-</li>
-<li>
-<p><a href="#s_8">Equalização de Histogramas</a></p>
-</li>
-<li>
-<p><a href="#s_9">Filtragem no Domínio Espacial</a></p>
-</li>
-<li>
-<p><a href="#s_10">Algoritmo de Tiltshif</a></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</a></p>
-</li>
-<li>
-<p><a href="#s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</a></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><a href="#s_11">Transformada Discreta de Fourier</a></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="s_ProcessamentodeImagensnoDomínioEspacial">Processamento de Imagens no Domínio Espacial</h3>
+<h1 id="_1_processamento_de_imagens_no_domínio_espacial" class="sect0">1. Processamento de Imagens no Domínio Espacial</h1>
+<div class="openblock partintro">
+<div class="content">
 <div class="paragraph">
 <p>Ferramenta que busca alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o filtro utilizado. Nesse caso, as operações são feitas diretamente no plano da imagem.</p>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_2_exemplos_do_implementação_de_processamento_digital_de_imagens_no_domínio_espacial_utilizando_opencv">2. Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="s_exemplos1">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
-<div class="sect3">
-<h4 id="s_makefile">MakeFile</h4>
+<h3 id="_2_1_makefile">2.1. MakeFile</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -556,8 +506,8 @@ GCC = g++
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="s_1">Helloworld</h4>
+<div class="sect2">
+<h3 id="_2_2_helloworld">2.2. Helloworld</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -586,7 +536,10 @@ int main(int argc, char** argv){
 </div>
 <div class="title">Figure 1. Biel</div>
 </div>
-<div id="s_2" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_3_pintando_pixels">2.3. Pintando Pixels</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 2: O algoritmo a seguir abre a <a href="#bolhas">figura 2</a> (interpretando-a em escala de cinza), e a exibe em uma janela. Após isso, desenha um quadrado preto em uma região pré-estabelecida.
@@ -640,7 +593,10 @@ int main(int, char**){
 </div>
 <div class="title">Figure 3. pixels.cpp output</div>
 </div>
-<div id="s_3" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_4_negativo">2.4. Negativo</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 3: O programa seguinte, <a href="#regionscpp">regions.cpp</a>, solicita ao usuário as coordenadas de dois pontos P1 e P2 localizados dentro dos limites do tamanho da imagem que lhe for fornecida (ver a <a href="#terminalregions">figura 4</a>). Entretanto, a região definida pelo retângulo de vértices opostos definidos pelos pontos P1 e P2 será exibida com o negativo da imagem na região correspondente. A resposta do algorimto pode ser vista na <a href="#regions">figura 5</a>.</p>
@@ -713,7 +669,10 @@ int main(int, char**){
 </div>
 <div class="title">Figure 5. regions.cpp Output</div>
 </div>
-<div id="s_4" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_5_trocando_quadrantes">2.5. Trocando Quadrantes</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 4: O quarto exemplo faz a troca de quadrantes diagonal na imagem. Esse procedimento é uma etapa importante em processamento de imagens no domínio da frequência, e será implementado novamente mais na frente. É explorado no algoritmo <a href="#trocarregioes">trocarregioes.cpp</a> o uso da classe Mat e seus construtores para criar as regiões que serão trocadas.</p>
@@ -781,7 +740,10 @@ int main(int, char **)
 </div>
 <div class="title">Figure 6. trocaregioes.cpp Output</div>
 </div>
-<div id="s_5" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_6_png_versus_yml">2.6. PNG versus YML</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 5: O programa a seguir gera uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal. Grava a imagem no formato PNG que possui valores inteiros, e no formato YML com valores em pontos flutuantes. Por último é feita uma comparação entre os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. É possível observar no gráfico da <a href="#ymlxpng">figura 8</a> gerado que a diferença entre as duas imagens é pequena, considerando que os valores são menores que 1, e os pixeis representam 256 possíveis tons de cinza. Note que haveria uma mudança significativa na visualização da imagem PNG gerada, se o arredondamento resultante da imagem YML mudasse mais de 5 tons de pixeis, o que não ocorre nessa situação. O algoritmo gera também dois arquivos no formato TXT, e o gráfico foi gerado no excel.</p>
@@ -879,7 +841,10 @@ int main(int argc, char **argv)
 </div>
 <div class="title">Figure 8. Gráfico da Diferença</div>
 </div>
-<div id="s_6" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_7_criptografia_por_esteganometria">2.7. Criptografia por Esteganometria</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 6: O algoritmo a seguir realiza uma descriptografia de uma imagem que passou por um processo de esteganografia. Lembre-se que os bits menos significativos dos pixels da imagem fornecida deverão compor os bits mais significativos dos pixels da imagem recuperada. O programa recebe como parâmetros de linha de comando o nome da imagem resultante da esteganografia (<a href="#cripto">Figura 9</a>).</p>
@@ -941,7 +906,10 @@ int main(int argc, char**argv) {
 </div>
 <div class="title">Figure 10. Imagem Descriptografada</div>
 </div>
-<div id="s_7" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_8_algoritmo_de_floodfill">2.8. Algoritmo de Floodfill</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 7: Uma implementação interessante em processamento digital de imagens é o cálculo de objetos presentes em uma determinada cena. A identificação das bolhas na <a href="#bolhas">figura 2</a> (regiões brancas) pode variar de acordo com a consideração que é feita para os objetos (bolhas). Dessa forma, o algoritmo a seguir busca inicialmente excluir os objetos na borda da imagem, após isso ele identifica os objetos com "buracos" (bolhas com regiões pretas dentro), e retorna no terminal a quantidade de bolhas nas bordas, de buracos e das bolhas resultantes na imagem. Para isso, foi utilizado o algoritmo floodfill.</p>
@@ -1112,7 +1080,10 @@ int main(int argc, char **argv)
 </div>
 <div class="title">Figure 16. terminal Output</div>
 </div>
-<div id="s_8" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_9_equalização_de_histogramas">2.9. Equalização de Histogramas</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 8: A próxima implementação utiliza dos conceitos de equalização de histogramas para melhorar a distribuição de tons de cinza em uma determinada imagem. O algoritmo retorna continuamente duas janelas de visualização da webcam do computador, uma é relativa à imagem original (<a href="#image">figura 17</a>) em tons de cinza, e a outra refere-se à essa imagem equalizada (<a href="#imagequalized">figura 18</a>). Ao pressionar "ESC" o programa finaliza e retorna a captura das imagens no momento ligeiramente antes de pressionar a tecla.</p>
@@ -1210,7 +1181,10 @@ int main(int argc, char** argv){
 <div class="paragraph">
 <p>Como pode ser observado, a equalização revela detalhes antes escondidos pela baixa iluminação, como a mão, a barba e alguns contornos.</p>
 </div>
-<div id="s_9" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_10_filtragem_no_domínio_espacial">2.10. Filtragem no Domínio Espacial</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 9: A filtragem no domínio espacial é uma ferramenta que busca alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o filtro utilizado. Nesse caso, as operações são feitas diretamente no plano da imagem. É possível realizar a filtragem através da convolução bidimensional de uma máscara (matriz de tamanho ímpar) com a matriz que representa a imagem a ser filtrada. A fórmula da convolução pode ser observada na <a href="#convolucao">figura 19</a>.</p>
@@ -1421,7 +1395,10 @@ int main(int, char **)
 </div>
 <div class="title">Figure 25. Máscaras da média aritmética (a) e média ponderada (b) (processamento digital de imagens - Rafael c. gonzalez)</div>
 </div>
-<div id="s_10" class="ulist">
+</div>
+<div class="sect2">
+<h3 id="_2_11_algoritmo_de_tiltshif">2.11. Algoritmo de Tiltshif</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 10: Tiltshift</p>
@@ -1430,8 +1407,10 @@ int main(int, char **)
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="s_ProcessamentodeImagensnoDomíniodafrequencia">Processamento de Imagens no Domínio da Frequência</h3>
+</div>
+<div class="sect1">
+<h2 id="s_ProcessamentodeImagensnoDomíniodafrequencia">3. Processamento de Imagens no Domínio da Frequência</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Antes de inciar o tópico de Processamento de Imagens no Domínio da Frequência, é interessante comentar sobre a importância da transformada discreta de Fourier (DFT) nessas aplicações, mais especificamente, a transformada discreta de Fourier de duas dimensões (<a href="#DFT">figura 26</a>).</p>
 </div>
@@ -1478,9 +1457,13 @@ int main(int, char **)
 <p>Entre os tipos de filtros utilizados, podem-se citar os filtros low-pass e high-pass. Ao atenuar altas frequências (low-pass) propõe uma diminuição visual dos pontos de grandes transições de intensidades em uma imagem, deixando-a borrada. Já, ao filtrar baixas frequências (high-pass) ocorre o realce dos pontos de grandes transições de intensidades, mas deixa a imagem resultante com um menor contraste.</p>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="s_exemplos2">4. Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="s_exemplos2">Exemplos do implementação de processamento digital de imagens no domínio espacial utilizando openCV:</h3>
-<div id="s_11" class="ulist">
+<h3 id="s_11">4.1. Transformada Discreta de Fourier</h3>
+<div class="ulist">
 <ul>
 <li>
 <p>Exemplo 11: O algoritmo a seguir, utiliza a <a href="#senoide">figura 7</a> da senoide, e calcula os seus espectros em magnitude e em fase.</p>
@@ -1614,7 +1597,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-30 13:23:26 -0300
+Last updated 2023-06-30 14:18:16 -0300
 </div>
 </div>
 </body>
