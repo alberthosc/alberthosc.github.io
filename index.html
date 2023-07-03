@@ -473,10 +473,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_1_processamento_de_imagens_no_domínio_espacial">1. Processamento de Imagens no Domínio Espacial</h2>
 <div class="sectionbody">
-<div class="listingblock indent">
-<div class="content">
-<pre>Ferramentas que buscam alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o processamento aplicado. Nesse caso, as operações são feitas diretamente no plano da imagem.</pre>
-</div>
+<div class="paragraph">
+<p>Ferramentas que buscam alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o processamento aplicado. Nesse caso, as operações são feitas diretamente no plano da imagem.</p>
 </div>
 </div>
 </div>
@@ -485,12 +483,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_2_1_makefile">2.1. MakeFile</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Arquivo Makefile que possui regras para compilar as dependências das bibliotecas openCV de forma automática.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Arquivo Makefile que possui regras para compilar as dependências das bibliotecas openCV de forma automática.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Makefile</div>
@@ -507,12 +503,10 @@ GCC = g++
 </div>
 <div class="sect2">
 <h3 id="_2_2_helloworld">2.2. Helloworld</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 1: A primeira implementação é de um algoritmo "helloworld" que apresente uma imagem em tons de cinza via terminal, utilizando openCV na linguagem de programação C++. O algoritmo retorna a imagem do Biel na <a href="#biel">figura 1</a> vista a seguir.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 1: A primeira implementação é de um algoritmo "helloworld" que apresente uma imagem em tons de cinza via terminal, utilizando openCV na linguagem de programação C++. O algoritmo retorna a imagem do Biel na &lt;&lt;biel, figura 1&gt;&gt; vista a seguir.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">hello.cpp</div>
@@ -538,13 +532,11 @@ int main(int argc, char** argv){
 </div>
 <div class="sect2">
 <h3 id="_2_3_pintando_pixels">2.3. Pintando Pixels</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 2: O algoritmo a seguir abre a <a href="#bolhas">figura 2</a> (interpretando-a em escala de cinza), e a exibe em uma janela. Após isso, desenha um quadrado preto em uma região pré-estabelecida.
-Em seguida, ele irá aguardar que o usuário pressione alguma tecla. Uma vez pressionada a tecla, o programa reabrirá o arquivo da imagem interpretando-a em escala de cores e passará a desenhar um quadrado vermelho na mesma região que foi pré-estabelecida. A imagem &lt;&lt;&gt;&gt;</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 2: O algoritmo a seguir abre a &lt;&lt;bolhas,figura 2&gt;&gt; (interpretando-a em escala de cinza), e a exibe em uma janela. Após isso, desenha um quadrado preto em uma região pré-estabelecida.
+Em seguida, ele irá aguardar que o usuário pressione alguma tecla. Uma vez pressionada a tecla, o programa reabrirá o arquivo da imagem interpretando-a em escala de cores e passará a desenhar um quadrado vermelho na mesma região que foi pré-estabelecida. A imagem &lt;&lt;&gt;&gt;</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">pixels.cpp</div>
@@ -595,12 +587,10 @@ int main(int, char**){
 </div>
 <div class="sect2">
 <h3 id="_2_4_negativo">2.4. Negativo</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 3: O programa seguinte, <a href="#regionscpp">regions.cpp</a>, solicita ao usuário as coordenadas de dois pontos P1 e P2 localizados dentro dos limites do tamanho da imagem que lhe for fornecida (ver a <a href="#terminalregions">figura 4</a>). Entretanto, a região definida pelo retângulo de vértices opostos definidos pelos pontos P1 e P2 será exibida com o negativo da imagem na região correspondente. A resposta do algorimto pode ser vista na <a href="#regions">figura 5</a>.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 3: O programa seguinte, &lt;&lt;regionscpp,regions.cpp&gt;&gt;, solicita ao usuário as coordenadas de dois pontos P1 e P2 localizados dentro dos limites do tamanho da imagem que lhe for fornecida (ver a &lt;&lt;terminalregions,figura 4&gt;&gt;). Entretanto, a região definida pelo retângulo de vértices opostos definidos pelos pontos P1 e P2 será exibida com o negativo da imagem na região correspondente. A resposta do algorimto pode ser vista na &lt;&lt;regions, figura 5&gt;&gt;.</pre>
+</div>
 </div>
 <div id="regionscpp" class="listingblock">
 <div class="title">regions.cpp</div>
@@ -671,12 +661,10 @@ int main(int, char**){
 </div>
 <div class="sect2">
 <h3 id="_2_5_trocando_quadrantes">2.5. Trocando Quadrantes</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 4: O quarto exemplo faz a troca de quadrantes diagonal na imagem. Esse procedimento é uma etapa importante em processamento de imagens no domínio da frequência, e será implementado novamente mais na frente. É explorado no algoritmo <a href="#trocarregioes">trocarregioes.cpp</a> o uso da classe Mat e seus construtores para criar as regiões que serão trocadas.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 4: O quarto exemplo faz a troca de quadrantes diagonal na imagem. Esse procedimento é uma etapa importante em processamento de imagens no domínio da frequência, e será implementado novamente mais na frente. É explorado no algoritmo &lt;&lt;trocarregioes,trocarregioes.cpp&gt;&gt; o uso da classe Mat e seus construtores para criar as regiões que serão trocadas.</pre>
+</div>
 </div>
 <div id="trocarregioes" class="listingblock">
 <div class="title">trocarregioes.cpp</div>
@@ -730,8 +718,10 @@ int main(int, char **)
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A imagem que foi usada como entrada para o algoritmo é a do <a href="#biel">Biel</a>. A saída mostra os quadrantes diagonais trocados. Veja a <a href="#saidaquadrantes">figura 6</a>.</p>
+<div class="listingblock indent">
+<div class="content">
+<pre>A imagem que foi usada como entrada para o algoritmo é a do &lt;&lt;biel,Biel&gt;&gt;. A saída mostra os quadrantes diagonais trocados. Veja a &lt;&lt;saidaquadrantes,figura 6&gt;&gt;.</pre>
+</div>
 </div>
 <div id="saidaquadrantes" class="imageblock">
 <div class="content">
@@ -742,12 +732,10 @@ int main(int, char **)
 </div>
 <div class="sect2">
 <h3 id="_2_6_png_versus_yml">2.6. PNG versus YML</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 5: O programa a seguir gera uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal. Grava a imagem no formato PNG que possui valores inteiros, e no formato YML com valores em pontos flutuantes. Por último é feita uma comparação entre os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. É possível observar no gráfico da <a href="#ymlxpng">figura 8</a> gerado que a diferença entre as duas imagens é pequena, considerando que os valores são menores que 1, e os pixeis representam 256 possíveis tons de cinza. Note que haveria uma mudança significativa na visualização da imagem PNG gerada, se o arredondamento resultante da imagem YML mudasse mais de 5 tons de pixeis, o que não ocorre nessa situação. O algoritmo gera também dois arquivos no formato TXT, e o gráfico foi gerado no excel.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 5: O programa a seguir gera uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal. Grava a imagem no formato PNG que possui valores inteiros, e no formato YML com valores em pontos flutuantes. Por último é feita uma comparação entre os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. É possível observar no gráfico da &lt;&lt;ymlxpng,figura 8&gt;&gt; gerado que a diferença entre as duas imagens é pequena, considerando que os valores são menores que 1, e os pixeis representam 256 possíveis tons de cinza. Note que haveria uma mudança significativa na visualização da imagem PNG gerada, se o arredondamento resultante da imagem YML mudasse mais de 5 tons de pixeis, o que não ocorre nessa situação. O algoritmo gera também dois arquivos no formato TXT, e o gráfico foi gerado no excel.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">filestorage.cpp</div>
@@ -843,12 +831,10 @@ int main(int argc, char **argv)
 </div>
 <div class="sect2">
 <h3 id="_2_7_criptografia_por_esteganometria">2.7. Criptografia por Esteganometria</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 6: O algoritmo a seguir realiza uma descriptografia de uma imagem que passou por um processo de esteganografia. Lembre-se que os bits menos significativos dos pixels da imagem fornecida deverão compor os bits mais significativos dos pixels da imagem recuperada. O programa recebe como parâmetros de linha de comando o nome da imagem resultante da esteganografia (<a href="#cripto">Figura 9</a>).</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 6: O algoritmo a seguir realiza uma descriptografia de uma imagem que passou por um processo de esteganografia. Lembre-se que os bits menos significativos dos pixels da imagem fornecida deverão compor os bits mais significativos dos pixels da imagem recuperada. O programa recebe como parâmetros de linha de comando o nome da imagem resultante da esteganografia (&lt;&lt;cripto,Figura 9&gt;&gt;).</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">descriptesteganometria.cpp</div>
@@ -908,12 +894,10 @@ int main(int argc, char**argv) {
 </div>
 <div class="sect2">
 <h3 id="_2_8_algoritmo_de_floodfill">2.8. Algoritmo de Floodfill</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 7: Uma implementação interessante em processamento digital de imagens é o cálculo de objetos presentes em uma determinada cena. A identificação das bolhas na <a href="#bolhas">figura 2</a> (regiões brancas) pode variar de acordo com a consideração que é feita para os objetos (bolhas). Dessa forma, o algoritmo a seguir busca inicialmente excluir os objetos na borda da imagem, após isso ele identifica os objetos com "buracos" (bolhas com regiões pretas dentro), e retorna no terminal a quantidade de bolhas nas bordas, de buracos e das bolhas resultantes na imagem. Para isso, foi utilizado o algoritmo floodfill.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 7: Uma implementação interessante em processamento digital de imagens é o cálculo de objetos presentes em uma determinada cena. A identificação das bolhas na &lt;&lt;bolhas,figura 2&gt;&gt; (regiões brancas) pode variar de acordo com a consideração que é feita para os objetos (bolhas). Dessa forma, o algoritmo a seguir busca inicialmente excluir os objetos na borda da imagem, após isso ele identifica os objetos com "buracos" (bolhas com regiões pretas dentro), e retorna no terminal a quantidade de bolhas nas bordas, de buracos e das bolhas resultantes na imagem. Para isso, foi utilizado o algoritmo floodfill.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">bolhascombolhas.cpp</div>
@@ -1082,12 +1066,10 @@ int main(int argc, char **argv)
 </div>
 <div class="sect2">
 <h3 id="_2_9_equalização_de_histogramas">2.9. Equalização de Histogramas</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 8: A próxima implementação utiliza dos conceitos de equalização de histogramas para melhorar a distribuição de tons de cinza em uma determinada imagem. O algoritmo retorna continuamente duas janelas de visualização da webcam do computador, uma é relativa à imagem original (<a href="#image">figura 17</a>) em tons de cinza, e a outra refere-se à essa imagem equalizada (<a href="#imagequalized">figura 18</a>). Ao pressionar "ESC" o programa finaliza e retorna a captura das imagens no momento ligeiramente antes de pressionar a tecla.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 8: A próxima implementação utiliza dos conceitos de equalização de histogramas para melhorar a distribuição de tons de cinza em uma determinada imagem. O algoritmo retorna continuamente duas janelas de visualização da webcam do computador, uma é relativa à imagem original (&lt;&lt;image,figura 17&gt;&gt;) em tons de cinza, e a outra refere-se à essa imagem equalizada (&lt;&lt;imagequalized,figura 18&gt;&gt;). Ao pressionar "ESC" o programa finaliza e retorna a captura das imagens no momento ligeiramente antes de pressionar a tecla.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">equalize.cpp</div>
@@ -1177,18 +1159,18 @@ int main(int argc, char** argv){
 </div>
 <div class="title">Figure 18. Imagem Equalizada</div>
 </div>
-<div class="paragraph">
-<p>Como pode ser observado, a equalização revela detalhes antes escondidos pela baixa iluminação, como a mão, a barba e alguns contornos.</p>
+<div class="listingblock indent">
+<div class="content">
+<pre>Como pode ser observado, a equalização revela detalhes antes escondidos pela baixa iluminação, como a mão, a barba e alguns contornos.</pre>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_2_10_filtragem_no_domínio_espacial">2.10. Filtragem no Domínio Espacial</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 9: A filtragem no domínio espacial é uma ferramenta que busca alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o filtro utilizado. Nesse caso, as operações são feitas diretamente no plano da imagem. É possível realizar a filtragem através da convolução bidimensional de uma máscara (matriz de tamanho ímpar) com a matriz que representa a imagem a ser filtrada. A fórmula da convolução pode ser observada na <a href="#convolucao">figura 19</a>.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 9: A filtragem no domínio espacial é uma ferramenta que busca alterar uma determinada imagem de entrada, de maneira a deixá-la com aspectos mais realçados, suavizados (borramento), ou aspectos desejados de acordo com o filtro utilizado. Nesse caso, as operações são feitas diretamente no plano da imagem. É possível realizar a filtragem através da convolução bidimensional de uma máscara (matriz de tamanho ímpar) com a matriz que representa a imagem a ser filtrada. A fórmula da convolução pode ser observada na &lt;&lt;convolucao,figura 19&gt;&gt;.</pre>
+</div>
 </div>
 <div id="convolucao" class="imageblock">
 <div class="content">
@@ -1196,12 +1178,10 @@ int main(int argc, char** argv){
 </div>
 <div class="title">Figure 19. Convolução bidimensional</div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 9 (Continuação): Baseado nisso, o algoritmo a seguir foi desenvolvido para realizar o filtro laplaciano do gaussiano, onde a princípio aplica-se a máscara gaussiana na imagem de entrada, e em seguida aplica a máscara laplaciana. Além desse filtro, também é possível aplicar uma série de filtros diferentes: filtro da média; gaussiano; sobel horizontal; sobel vertical; sobel +45°; -45°; laplaciano e boost. O usuário determina qual filtro especificamente deseja aplicar à imagem de entrada via terminal, de acordo com a letra digitada (ver switch case no algoritmo <a href="#lapgaus">lapgauss.cpp</a>).</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 9 (Continuação): Baseado nisso, o algoritmo a seguir foi desenvolvido para realizar o filtro laplaciano do gaussiano, onde a princípio aplica-se a máscara gaussiana na imagem de entrada, e em seguida aplica a máscara laplaciana. Além desse filtro, também é possível aplicar uma série de filtros diferentes: filtro da média; gaussiano; sobel horizontal; sobel vertical; sobel +45°; -45°; laplaciano e boost. O usuário determina qual filtro especificamente deseja aplicar à imagem de entrada via terminal, de acordo com a letra digitada (ver switch case no algoritmo &lt;&lt;lapgaus&gt;&gt;).</pre>
+</div>
 </div>
 <div id="lapgaus" class="listingblock">
 <div class="title">lapgauss.cpp</div>
@@ -1337,12 +1317,10 @@ int main(int, char **)
 }</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 9 (Continuação): A imagem de entrada <a href="#salepimenta">figura 20</a>, retirada do livro de Processamento Digital de Imagens de Rafael C. Gonzalez, foi utilizada para avaliar os efeitos de suavização do ruido na aplicação dos filtros mostrados acima. Vale salientar que o filtro ideal para esse tipo de ruido é o filtro da mediana.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 9 (Continuação): A imagem de entrada &lt;&lt;salepimenta, figura 20&gt;&gt;, retirada do livro de Processamento Digital de Imagens de Rafael C. Gonzalez, foi utilizada para avaliar os efeitos de suavização do ruido na aplicação dos filtros mostrados acima. Vale salientar que o filtro ideal para esse tipo de ruido é o filtro da mediana.</pre>
+</div>
 </div>
 <div id="salepimenta" class="imageblock">
 <div class="content">
@@ -1350,12 +1328,10 @@ int main(int, char **)
 </div>
 <div class="title">Figure 20. Imagem Sal e Pimenta (processamento digital de imagens - Rafael c. gonzalez)</div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 9 (Continuação): As respostas da media, laplaciano, gaussiano e laplaciano do gaussiano são vistas, respectivamente, nas seguintes figuras: <a href="#media">figura 21</a>, <a href="#gaussiano">figura 22</a>, <a href="#laplaciano">figura 23</a>, <a href="#log">figura 24</a>.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 9 (Continuação): As respostas da media, laplaciano, gaussiano e laplaciano do gaussiano são vistas, respectivamente, nas seguintes figuras: &lt;&lt;media,figura 21&gt;&gt;, &lt;&lt;gaussiano,figura 22&gt;&gt;, &lt;&lt;laplaciano,figura 23&gt;&gt;, &lt;&lt;log,figura 24&gt;&gt;.</pre>
+</div>
 </div>
 <div id="media" class="imageblock">
 <div class="content">
@@ -1381,12 +1357,10 @@ int main(int, char **)
 </div>
 <div class="title">Figure 24. Filtragem com máscara laplaciano do gaussiano</div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 9 (Continuação): Note que o filtro laplaciano do gaussiano apresenta detalhes de contornos na imagem, mas com uma quantidade de ruído bem menor que o filtro somente laplaciano. Isso ocorre pela suavização feita pelo filtro gaussiano antes da aplicação do laplaciano. Além disso, é notório o borramento causado pelos filtros da média e gaussiano. Para reduzir a suavização ocasionada pelo filtro da média, é possível realizar a média ponderada, definindo na máscara pesos maiores para a sua região central (veja a <a href="#mascaramedia">figura 25</a> retirada do livro de Rafael C. Gonzalez. A letra "a" é a máscara da média e "b" da média ponderada).</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 9 (Continuação): Note que o filtro laplaciano do gaussiano apresenta detalhes de contornos na imagem, mas com uma quantidade de ruído bem menor que o filtro somente laplaciano. Isso ocorre pela suavização feita pelo filtro gaussiano antes da aplicação do laplaciano. Além disso, é notório o borramento causado pelos filtros da média e gaussiano. Para reduzir a suavização ocasionada pelo filtro da média, é possível realizar a média ponderada, definindo na máscara pesos maiores para a sua região central (veja a &lt;&lt;mascaramedia,figura 25&gt;&gt; retirada do livro de Rafael C. Gonzalez. A letra "a" é a máscara da média e "b" da média ponderada).</pre>
+</div>
 </div>
 <div id="mascaramedia" class="imageblock">
 <div class="content">
@@ -1397,12 +1371,10 @@ int main(int, char **)
 </div>
 <div class="sect2">
 <h3 id="_2_11_algoritmo_de_tiltshif">2.11. Algoritmo de Tiltshif</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 10: Tiltshift</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 10: Tiltshift</pre>
+</div>
 </div>
 </div>
 </div>
@@ -1462,12 +1434,10 @@ int main(int, char **)
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="s_11">4.1. Transformada Discreta de Fourier</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 11: O algoritmo a seguir, utiliza a <a href="#senoide">figura 7</a> da senoide, e calcula os seus espectros em magnitude e em fase.</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 11: O algoritmo a seguir, utiliza a &lt;&lt;senoide,figura 7&gt;&gt; da senoide, e calcula os seus espectros em magnitude e em fase.</pre>
+</div>
 </div>
 <div id="dftimage" class="listingblock cpp">
 <div class="title">dftimage.cpp</div>
@@ -1571,12 +1541,10 @@ int main(int argc, char **argv)
 }</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exemplo 11 (Continuação): As respectivas respostas podem ser vistas a seguir (<a href="#mag">figura 31</a> e <a href="#fase">figura 32</a>).</p>
-</li>
-</ul>
+<div class="listingblock indent">
+<div class="content">
+<pre>Exemplo 11 (Continuação): As respectivas respostas podem ser vistas a seguir (&lt;&lt;mag, figura 31&gt;&gt; e &lt;&lt;fase, figura 32&gt;&gt;).</pre>
+</div>
 </div>
 <div id="mag" class="imageblock">
 <div class="content">
@@ -1596,7 +1564,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-30 14:36:57 -0300
+Last updated 2023-07-02 22:11:39 -0300
 </div>
 </div>
 </body>
