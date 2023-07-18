@@ -2047,7 +2047,7 @@ int main(int argc, char **argv)
 int main(int argc, char **argv)
 {
 
-    cv::VideoCapture video("video3.mp4");
+    cv::VideoCapture video("video1.mp4");
 
     if (!video.isOpened())
     {
@@ -2060,7 +2060,6 @@ int main(int argc, char **argv)
     cv::resizeWindow("Detecção de Caixas", 800, 600);
 
     bool previousValue = false, pausado = false;
-    ;
     int boxCount = 0;
 
     while (true)
@@ -2100,13 +2099,17 @@ int main(int argc, char **argv)
                 previousValue = true;
             }
 
-            // Desenha um círculo ou marcador no centro da imagem
-            // cv::circle(frame, center, 5, cv::Scalar(0, 0, 255), -1);
+            // Desenha um marcador no centro da imagem
             cv::drawMarker(frame, center, cv::Scalar(0, 0, 255), cv::MARKER_CROSS, 20, 2);
 
+            // Textos para visualização
             cv::putText(frame, "Numero de Caixas: " + std::to_string(boxCount), cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
-            cv::putText(frame, "previousValue: " + std::to_string(previousValue), cv::Point(10, 70), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
-            cv::putText(frame, "Valor de Intensidade (Center): " + std::to_string(currentValueCenter), cv::Point(10, 110), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
+            if (previousValue == 1)
+                cv::putText(frame, "Caixa detectada!", cv::Point(10, 70), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
+            else if (previousValue == 0)
+                cv::putText(frame, "Esteira!", cv::Point(10, 70), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
+
+            // Apresenta o frame atual na tela
             cv::imshow("Detecção de Caixas", frame);
         }
         if (cv::waitKey(1) == 'p' || cv::waitKey(1) == 'P') // Verifica se a tecla 'P' foi pressionada
@@ -2124,7 +2127,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-07-17 14:00:31 -0400
+Last updated 2023-07-18 00:05:02 -0400
 </div>
 </div>
 </body>
