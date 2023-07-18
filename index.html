@@ -2038,6 +2038,13 @@ int main(int argc, char **argv)
 <iframe src="https://www.youtube.com/embed/iccK1xhzv8s?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="ulist text-justify">
+<ul>
+<li>
+<p>Como foi dito, a posição do pixel para a detecção da caixa foi descrita na região central da imagem. A referência do valor de intensidade para a diferenciação entre caixa e esteira é: valores acima de 200 correspondem a uma caixa, valores menores que 170 correspondem à esteira. Veja que para os valores entre 200 e 170 não será considerado caixa ou esteira, isso ocorre para evitar falsas interpretações em regiões de transições, onde o valor de intensidade pode ser menor que 200 mas ainda corresponder a uma caixa ou o inverso. Feito isso, o algoritmo deve contar uma caixa sempre que houver transição de esteira para caixa, e mostrar o valor de contagem na saída do terminal. Veja a seguir o algoritmo desenvolido:</p>
+</li>
+</ul>
+</div>
 <div id="projeto" class="listingblock cpp">
 <div class="title">projeto.cpp</div>
 <div class="content">
@@ -2122,12 +2129,37 @@ int main(int argc, char **argv)
 }</code></pre>
 </div>
 </div>
+<div class="ulist text-justify">
+<ul>
+<li>
+<p>As respostas do algoritmo para cada vídeo de entrada estão demonstradas abaixo:</p>
+</li>
+</ul>
+</div>
+<div class="videoblock">
+<div class="title">Resposta do vídeo 1</div>
+<div class="content">
+<iframe src="https://www.youtube.com/embed/sbMRyyhXr8w?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="videoblock">
+<div class="title">Resposta do vídeo 2</div>
+<div class="content">
+<iframe src="https://www.youtube.com/embed/ZaGGEVY0kDI?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="videoblock">
+<div class="title">Resposta do vídeo 3</div>
+<div class="content">
+<iframe src="https://www.youtube.com/embed/h9UGYyr_nWs?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-07-18 00:05:02 -0400
+Last updated 2023-07-18 00:30:05 -0400
 </div>
 </div>
 </body>
