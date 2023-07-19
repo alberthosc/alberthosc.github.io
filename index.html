@@ -457,7 +457,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_2_8_algoritmo_de_floodfill">2.8. Algoritmo de Floodfill</a></li>
 <li><a href="#_2_9_equalização_de_histogramas">2.9. Equalização de Histogramas</a></li>
 <li><a href="#_2_10_filtragem_no_domínio_espacial">2.10. Filtragem no Domínio Espacial</a></li>
-<li><a href="#_2_11_algoritmo_de_tiltshif">2.11. Algoritmo de Tiltshif</a></li>
 </ul>
 </li>
 <li><a href="#s_ProcessamentodeImagensnoDomíniodafrequencia">3. Processamento de Imagens no Domínio da Frequência</a></li>
@@ -1401,16 +1400,6 @@ int main(int, char **)
 <div class="title">Figure 25. Máscaras da média aritmética (a) e média ponderada (b) (processamento digital de imagens - Rafael c. gonzalez)</div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_2_11_algoritmo_de_tiltshif">2.11. Algoritmo de Tiltshif</h3>
-<div class="ulist text-justify">
-<ul>
-<li>
-<p>Exemplo 10: Tiltshift</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2016,7 +2005,7 @@ int main(int argc, char **argv)
 <div class="ulist text-justify">
 <ul>
 <li>
-<p>A esteira utiliza um motor DC para o acionamento, logo a ideia da implementação foi posicionar a câmera em uma posição fixa acima da esteira, e ligar o motor com as caixas já posicionadas. À medida com que as caixas passam por uma determianada posição central da área de gravação, o algoritmo deve identificar que uma caixa está passando, e durante o vídeo deve ser contada a quantidade de caixa que passou. Como dito anteriormente, a presença de uma caixa na região central da gravação é identificada através do valor de intensidade do pixel no momento analisado, logo foi utilizado o sistema de cores HSI (<em>hue, saturation and intensity</em>) ou HSV (<em>hue, saturation and value</em>), utilizando-se da componente (itensidade). Veja abaixo os vídeos capturados:</p>
+<p>A esteira utiliza um motor DC para o acionamento, logo a ideia da implementação foi posicionar a câmera em uma posição fixa acima da esteira, e ligar o motor com as caixas já posicionadas. À medida com que as caixas passam por uma determinada posição central da área de gravação, o algoritmo deve identificar que uma caixa está passando, e durante o vídeo deve ser contada a quantidade de caixas que passaram. Como dito anteriormente, a presença de uma caixa na região central da gravação é identificada através do valor de intensidade do pixel no momento analisado, logo foi utilizado o sistema de cores HSI (<em>hue, saturation and intensity</em>) ou HSV (<em>hue, saturation and value</em>), utilizando-se da componente de itensidade (<em>intensity</em> ou <em>value</em>). Veja abaixo os vídeos capturados:</p>
 </li>
 </ul>
 </div>
@@ -2041,7 +2030,7 @@ int main(int argc, char **argv)
 <div class="ulist text-justify">
 <ul>
 <li>
-<p>Como foi dito, a posição do pixel para a detecção da caixa foi descrita na região central da imagem. A referência do valor de intensidade para a diferenciação entre caixa e esteira é: valores acima de 200 correspondem a uma caixa, valores menores que 170 correspondem à esteira. Veja que para os valores entre 200 e 170 não será considerado caixa ou esteira, isso ocorre para evitar falsas interpretações em regiões de transições, onde o valor de intensidade pode ser menor que 200 mas ainda corresponder a uma caixa ou o inverso. Feito isso, o algoritmo deve contar uma caixa sempre que houver transição de esteira para caixa, e mostrar o valor de contagem na saída do terminal. Veja a seguir o algoritmo desenvolido:</p>
+<p>Como foi dito, a posição do pixel para a detecção da caixa foi descrita na região central da imagem. A referência do valor de intensidade para a diferenciação entre caixa e esteira é: valores acima de 200 correspondem a uma caixa e valores menores que 170 correspondem à esteira. Veja que para os valores entre 200 e 170 não será considerada caixa nem esteira, isso ocorre para evitar falsas interpretações em regiões de transições, onde o valor de intensidade pode ser menor que 200 mas ainda corresponder a uma caixa ou o inverso. Feito isso, o algoritmo deve contar uma caixa sempre que houver transição de esteira para caixa, e mostrar o valor de contagem na saída do terminal. Veja a seguir o algoritmo desenvolido:</p>
 </li>
 </ul>
 </div>
@@ -2166,7 +2155,7 @@ int main(int argc, char **argv)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-07-18 00:57:35 -0400
+Last updated 2023-07-18 22:57:23 -0400
 </div>
 </div>
 </body>
